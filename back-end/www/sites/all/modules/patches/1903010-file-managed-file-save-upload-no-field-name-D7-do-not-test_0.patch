@@ -1,0 +1,13 @@
+diff --git a/file.module b/file.module
+index ae452a6..8e4fcfa 100644
+--- a/file.module
++++ b/file.module
+@@ -658,7 +658,7 @@ function file_managed_file_save_upload($element) {
+ 
+   $destination = isset($element['#upload_location']) ? $element['#upload_location'] : NULL;
+   if (isset($destination) && !file_prepare_directory($destination, FILE_CREATE_DIRECTORY)) {
+-    watchdog('file', 'The upload directory %directory for the file field !name could not be created or is not accessible. A newly uploaded file could not be saved in this directory as a consequence, and the upload was canceled.', array('%directory' => $destination, '!name' => $element['#field_name']));
++    watchdog('file', 'The upload directory %directory for the !name field could not be created or is not accessible. A newly uploaded file could not be saved in this directory as a consequence, and the upload was canceled.', array('%directory' => $destination, '!name' => $element['#title']));
+     form_set_error($upload_name, t('The file could not be uploaded.'));
+     return FALSE;
+   }
