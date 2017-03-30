@@ -1,0 +1,16 @@
+version: "2"
+
+services:
+  lamp:
+    image: wadmiraal/drupal:7.54
+    container_name: drupal
+    ports:
+      - 80:80
+      - 3306:3306
+    volumes:
+      - api_test_db:/var/lib/mysql
+      - ./www:/var/www
+      - ./assets:/opt
+      - ./scripts/php.ini:/etc/php5/apache2/php.ini
+volumes:
+  api_test_db:
